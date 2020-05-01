@@ -1,23 +1,35 @@
 import React, { Component } from "react";
 import Directory from "./DirectoryComponent";
 import { CAMPSITES } from "../shared/campsites";
+import { COMMENTS } from '../shared/comments';
+import { PARTNERS } from '../shared/partners';
+import { PROMOTIONS } from '../shared/promotions';
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import Home from "./HomeComponent";
+import Contact from "./ContactComponent";
 import { Switch, Route, Redirect } from "react-router-dom";
-import CampsiteInfo from "./CampsiteInfoComponent";
+
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      campsites: CAMPSITES
+      campsites: CAMPSITES,
+      comments: COMMENTS,
+      partners: PARTNERS,
+      promotions: PROMOTIONS
     };
   }
 
   render() {
     const HomePage = () => {
-      return <Home />;
+      return <Home
+        campsite={this.state.campsites.filter(campsite => campsite.featured)[0]}
+        promotion={this.state.promotions.filter(promotion => promotion.featured)[0]}
+        partner={this.state.partners.filter(partner=> partner.featured)[0]}
+
+      />;
     };
 
     return (
@@ -30,19 +42,9 @@ class Main extends Component {
             path="/directory"
             render={() => <Directory campsites={this.state.campsites} />}
           />
+          <Route exact path='/contactus' component={Contact} />
           <Redirect to="/home" />
-        </Switch>
-        <Directory
-          campsites={this.state.campsites}
-          onClick={campsiteId => this.onCampsiteSelect(campsiteId)}
-        />
-        <CampsiteInfo
-          campsite={
-            this.state.campsites.filter(
-              campsite => campsite.id === this.state.selectedCampsite
-            )[0]
-          }
-        />
+           </Switch>
         <Footer />
       </div>
     );
