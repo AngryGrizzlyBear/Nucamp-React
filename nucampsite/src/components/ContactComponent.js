@@ -199,17 +199,17 @@ class Contact extends Component {
                       validEmail
                     }}
                   />
+                  <Errors
+                    className="text-danger"
+                    model=".email"
+                    show="touched"
+                    component="div"
+                    messages={{
+                      required: "Required",
+                      validEmail: "Invalid email address"
+                    }}
+                  />
                 </Col>
-                <Errors
-                  className="text-danger"
-                  model=".email"
-                  show="touched"
-                  component="div"
-                  messages={{
-                    required: "Required",
-                    validEmail: "Invalid email address"
-                  }}
-                />
               </Row>
               <Row className="form-group">
                 {" "}
@@ -227,7 +227,7 @@ class Contact extends Component {
                 </Col>
                 <Col md={4}>
                   <Control.select
-                    model=".contractType"
+                    model=".contactType"
                     name="contactType"
                     className="form-control"
                   >
