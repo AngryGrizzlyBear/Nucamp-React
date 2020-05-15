@@ -85,7 +85,7 @@ export const addComments = comments => ({
   payload: comments
 });
 
-export const fetchPromotions = () => dispatch => {
+export const fetchPromotions = () => (dispatch) => {
   dispatch(promotionsLoading());
 
   return fetch(baseUrl + "promotions")
