@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { actions } from "react-redux-form";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import {
-  addComment,
+  postComment,
   fetchCampsites,
   fetchComments,
   fetchPromotions
@@ -26,8 +26,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addComment: (campsiteId, rating, author, text) =>
-    addComment(campsiteId, rating, author, text),
+  postComment: (campsiteId, rating, author, text) =>
+    postComment(campsiteId, rating, author, text),
   fetchCampsites: () => fetchCampsites(),
   resetFeedbackForm: () => actions.reset("feedbackForm"),
   fetchComments: () => fetchComments(),
@@ -67,12 +67,18 @@ class Main extends Component {
     const CampsiteWithId = ({ match }) => {
       return (
         <CampsiteInfo
-        campsite={this.props.campsites.campsites.filter(campsite => campsite.id === +match.params.campsiteId)[0]}
-        isLoading={this.props.campsites.isLoading}
-        errMess={this.props.campsites.errMess}
-        comments={this.props.comments.comments.filter(comment => comment.campsiteId === +match.params.campsiteId)}
-        commentsErrMess={this.props.comments.errMess}
-        addComment={this.props.addComment}
+          campsite={
+            this.props.campsites.campsites.filter(
+              campsite => campsite.id === +match.params.campsiteId
+            )[0]
+          }
+          isLoading={this.props.campsites.isLoading}
+          errMess={this.props.campsites.errMess}
+          comments={this.props.comments.comments.filter(
+            comment => comment.campsiteId === +match.params.campsiteId
+          )}
+          commentsErrMess={this.props.comments.errMess}
+          postComment={this.props.postComment}
         />
       );
     };
