@@ -2,12 +2,15 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, .card-body>h5 {
-font-family: "Lobster", cursive;
+h1,
+h2,
+h3,
+.card-body > h5 {
+  font-family: "Lobster", cursive;
 }
 
 h2 {
-  color: #3046C5;
+  color: #3046c5;
 }
 
 .card-img-overlay h5 {
@@ -22,21 +25,41 @@ h2 {
 }
 
 .site-footer {
-  background-image: linear-gradient(#CEC8FF, white);
+  background-image: linear-gradient(#cec8ff, white);
   padding: 20px 0;
 }
 
 .jumbotron {
   margin: 0;
   padding: 30px;
-  background-image: linear-gradient(to right, #5637DD, #3046C5, #60106B);
+  background-image: linear-gradient(to right, #5637dd, #3046c5, #60106b);
   color: white;
 }
 
 .jumbotron h2 {
-  color: #CEC8FF;
+  color: #cec8ff;
 }
 
 .navbar-dark {
-  background-color: #901CAD;
+  background-color: #901cad;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: 300ms ease-out;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: 300ms ease-out;
 }
