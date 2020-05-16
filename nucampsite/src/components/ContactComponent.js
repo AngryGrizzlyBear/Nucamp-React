@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { Control, Form, Errors } from "react-redux-form";
 import { Link } from "react-router-dom";
+import { FadeTransform } from "react-animation-components";
 
 const required = val => val && val.length;
 const maxLength = len => val => !val || val.length <= len;
@@ -87,8 +88,15 @@ class Contact extends Component {
         </div>
         <div className="row row-content">
           <div className="col-12">
-            <h2>Send us your Feedback</h2>
-            <hr />
+            <FadeTransform
+              in
+              transformProps={{
+                exitTransform: "scale(0.5) translateY(-50%)"
+              }}
+            >
+              <h2>Send us your Feedback</h2>
+              <hr />
+            </FadeTransform>
           </div>
           <div className="col-md-10">
             <Form
