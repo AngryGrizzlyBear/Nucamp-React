@@ -64,14 +64,7 @@ function PartnerList(props) {
 }
 
 function About(props) {
-  const partners = props.partners.partners.map(partner => {
-    return (
-      <Media key={partner.id} tag="li">
-        <RenderPartner partner={partner} />
-      </Media>
-    );
-  });
-
+ 
   return (
     <div className="container">
       <div className="row">
